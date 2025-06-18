@@ -1,8 +1,14 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class GeradorSenhas {
     public static void main(String[] args){
         int idMenu = 0;
+        int idMenuSenha;
+        String maiusculas = "QWERTYUIOPASDFGHJKLZXCVBNM";
+        String minusculas = "qwertyuiopasdfghjklzxcvbnm";
+        String numeros = "1234567890";
+        String simbulos = "!@#$%*(){}[]/?";
         Scanner scanner = new Scanner(System.in);
         while (idMenu != 4) {
             System.out.println("\n\n === Gerador De Senhas === ");
@@ -14,8 +20,45 @@ public class GeradorSenhas {
             idMenu = scanner.nextInt();
             switch (idMenu){
                 case 1:
+                    System.out.println("\n\n === Gerar nova senha === ");
+                    System.out.println("\n 1 - Senha Extremamente Forte ");
+                    System.out.println(" 2 - Senha Forte ");
+                    System.out.println(" 3 - Senha Média ");
+                    System.out.println(" 4 - Senha Fraca \n\n");
+                    System.out.print("Digite a opção desejada: ");
+                    idMenuSenha = scanner.nextInt();
+                    String conjunto = "";
+                    switch (idMenuSenha){
+                        case 1:
+                            conjunto = maiusculas + minusculas + numeros + simbulos;
+                            break;
+                        case 2:
+                             conjunto = maiusculas + simbulos + numeros;
+                            break;
+                        case 3:
+                             conjunto = maiusculas + minusculas + numeros;
+                            break;
+                        case 4:
+                             conjunto = minusculas + numeros;
+                            break;
+                    }
+                    System.out.print("\n Digite o tamanho da Senha: ");
+                    int tamanho = scanner.nextInt();
+
+                    Random random = new Random();
+                    StringBuilder senha = new StringBuilder();
+
+                    for (int c = 0;c < tamanho;c++){
+                        int posicao = random.nextInt(conjunto.length());
+                        senha.append(conjunto.charAt(posicao));
+                    }
+                    System.out.println("\n Senha gerada: " + senha);
                     break;
                 case 2:
+
+                    break;
+                case 3:
+
                     break;
                 case 4:
                     System.out.println("\n Saindo ....");
