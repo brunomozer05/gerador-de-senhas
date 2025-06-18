@@ -79,7 +79,14 @@ public class GeradorSenhas {
                     }
                     break;
                 case 3:
-
+                    try {
+                        FileWriter fw = new FileWriter("senhas.txt", false);
+                        fw.write("");
+                        fw.close();
+                        System.out.println("\n\n Senhas excluídas com sucesso!");
+                    } catch (IOException e){
+                        System.out.println("ERRO / Não conseguiu excluir senhas");
+                    }
                     break;
                 case 4:
                     System.out.println("\n Saindo ....");
