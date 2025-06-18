@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -52,7 +55,14 @@ public class GeradorSenhas {
                         int posicao = random.nextInt(conjunto.length());
                         senha.append(conjunto.charAt(posicao));
                     }
-                    System.out.println("\n Senha gerada: " + senha);
+                    try{
+                        System.out.println("\n Senha gerada: " + senha);
+                    FileWriter fw = new FileWriter("senhas.txt" ,true);
+                    fw.write(senha.toString() + "\n");
+                    fw.close();
+                    } catch (IOException e){
+                        System.out.println("ERRO / Senha não foi gravada!");
+                    }
                     break;
                 case 2:
 
