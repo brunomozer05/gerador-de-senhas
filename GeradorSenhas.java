@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
@@ -65,7 +66,17 @@ public class GeradorSenhas {
                     }
                     break;
                 case 2:
-
+                    System.out.println("\n\n === Listando as senhas geradas === \n");
+                    try {
+                        BufferedReader br = new BufferedReader(new FileReader("senhas.txt"));
+                        String linha;
+                        while ((linha = br.readLine()) != null){
+                            System.out.println(linha +"\n");
+                        }
+                        br.close();
+                    } catch (IOException e){
+                        System.out.println("ERRO / Não conseguiu ler nenhum dado do arquivo senhas.txt");
+                    }
                     break;
                 case 3:
 
